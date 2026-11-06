@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة اليسر لمستلزمات المعامل الطبية</title>
+    <link rel="icon" type="image/png" href="./image/image_80a7016b.jpg">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🧪</div>
+                <div class="logo-text">
+                    <h1>اليسر</h1>
+                    <span>MEDICAL LAB CONSUMABLES</span>
+                </div>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">المنتجات</a></li>
+                <li><a href="#">عملائنا</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+
+    
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <h2>اليسر لمستلزمات المعامل الطبية.. شريككم الموثوق في الجودة والدقة.</h2>
+            <p>نوفر مجموعة شاملة من المستلزمات الطبية، المحاليل التشخيصية، وأدوات المختبرات الأساسية، لضمان سير عمل معملك بكفاءة وأمان.</p>
+            <div class="hero-btns">
+                <a href="#interaction-section" class="btn-main">طلب تسعير مخصص</a>
+                <a href="#pdf-block" class="btn-sub">تصفح قائمة الأسعار</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <h2 class="section-title">أقسام المنتجات الأساسية</h2>
+        
+        <div class="grid-container">
+            <div class="card">
+                <span class="card-icon"><img src="./image/3050220.png" width="50px" alt="تعقيم"></span>
+                <h3>وسائل الحماية والتعقيم</h3>
+            </div>
+
+            <div class="card">
+                <span class="card-icon"><img src="./image/قثغتهفنع.PNG" width="150px" alt="كواشف"></span>
+                <h3>كواشف ومحاليل</h3>
+            </div>
+
+            <div class="card">
+                <span class="card-icon"><img src="./image/9316822.png" width="50px" alt="سحب دم"></span>
+                <h3>أدوات سحب الدم</h3>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🔬</span>
+                <h3>زجاجيات وبلاستيكيات</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="interaction-section" class="interaction-section">
+        
+        <div class="form-block">
+            <h3>قسم الطلبات المباشرة</h3>
+            <p>يرجى ملء بيانات معملك وكتابة الأصناف المطلوبة بدقة.</p>
+            
+            <form id="lab-order-form">
+                <div class="input-group">
+                    <label for="lab-name">اسم المعمل:</label>
+                    <input type="text" id="lab-name" placeholder="مثال: معمل اليسر للتحاليل" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="lab-address">عنوان المعمل بالتفصيل:</label>
+                    <input type="text" id="lab-address" placeholder="المحافظة - المدينة - اسم الشارع" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="lab-phone">رقم الهاتف / الواتساب للعميل:</label>
+                    <input type="tel" id="lab-phone" placeholder="مثال: 010xxxxxxxx" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="order-list">اكتب الأصناف المطلوبة (اضغط Enter بعد كل صنف لترقيمه):</label>
+                    <div class="textarea-wrapper">
+                        <textarea id="order-list" rows="8" placeholder="1. اكتب الصنف الأول هنا&#10;2. اضغط Enter لتنتقل للصنف الثاني تلقائياً..." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">إرسال الطلب عبر الواتساب</button>
+            </form>
+        </div>
+
+        <div id="pdf-block" class="pdf-block">
+            <h3>قائمة أسعار أكتوبر 2026</h3>
+            <iframe src="اكتوبر 2026قائمة اسعار.pdf" width="100%" height="480px">
+                متصفحك لا يدعم عرض ملفات PDF مباشرة. يمكنك <a href="اكتوبر 2026قائمة اسعار.pdf">تحميل الملف من هنا</a>.
+            </iframe>
+            <div class="download-container">
+                <a href="اكتوبر 2026قائمة اسعار.pdf" download class="download-btn">تحميل نسخة PDF للطباعة</a>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        const textarea = document.getElementById('order-list');
+        
+        textarea.addEventListener('focus', function() {
+            if (this.value === '') {
+                this.value = '1. ';
+            }
+        });
+
+        textarea.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+
+                const startPos = this.selectionStart;
+                const endPos = this.selectionEnd;
+
+                const lines = this.value.substring(0, startPos).split('\n');
+                const nextNumber = lines.length + 1;
+
+                const newText = '\n' + nextNumber + '. ';
+
+                this.value =
+                    this.value.substring(0, startPos) +
+                    newText +
+                    this.value.substring(endPos);
+
+                this.selectionStart = this.selectionEnd =
+                    startPos + newText.length;
+            }
+        });
+
+        document.getElementById('lab-order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const labName = document.getElementById('lab-name').value.trim();
+            const labAddress = document.getElementById('lab-address').value.trim();
+            const labPhone = document.getElementById('lab-phone').value.trim();
+            const orderList = document.getElementById('order-list').value.trim();
+            
+            const textMessage = `طلب جديد من الموقع 🧪\n\n` +
+                                `*اسم المعمل:* ${labName}\n` +
+                                `*العنوان:* ${labAddress}\n` +
+                                `*رقم التواصل:* ${labPhone}\n\n` +
+                                `*الأصناف المطلوبة:*\n${orderList}`;
+            
+            const whatsappNumber = "201207286495";
+
+            const whatsappURL = "https://wa.me/" + whatsappNumber +
+                                "?text=" + encodeURIComponent(textMessage);
+
+            window.open(whatsappURL, "_blank");
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
